@@ -1,0 +1,17 @@
+---
+version: '3.8'
+services:
+  api:
+    build:
+      dockerfile: deploy/docker/api.Dockerfile
+      context: ../../
+    container_name: hih-api
+    ports:
+      - "7070:7070"
+    volumes:
+      - ./temp/compose/api:/data
+    environment:
+      PYTHONDONTWRITEBYTECODE: 1
+      PYTHONUNBUFFERED: 1
+      POETRY_VIRTUALENVS_CREATE: false
+      PYTHONPATH: "/project/app"
